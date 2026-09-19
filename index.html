@@ -38,16 +38,16 @@
         <!-- Centre links -->
         <ul class="navbar-nav mx-lg-auto mb-2 mb-lg-0 gap-lg-1">
           <li class="nav-item guest-only d-none"><a class="nav-link" data-page="index.html" href="index.html">Home</a></li>
-          <li class="nav-item auth-only d-none"><a class="nav-link" data-page="dashboard.html" href="dashboard.html">Dashboard</a></li>
-          <li class="nav-item"><a class="nav-link" data-page="recipes.html" href="recipes.html">All Recipes</a></li>
-          <li class="nav-item auth-only d-none"><a class="nav-link" data-page="my-recipes.html" href="my-recipes.html">My Recipes</a></li>
-          <li class="nav-item auth-only d-none"><a class="nav-link" data-page="create-recipe.html" href="create-recipe.html">Add Recipe</a></li>
+          <li class="nav-item auth-only d-none"><a class="nav-link" data-page="dashboard.html" href="pages/dashboard.html">Dashboard</a></li>
+          <li class="nav-item"><a class="nav-link" data-page="recipes.html" href="pages/recipes.html">All Recipes</a></li>
+          <li class="nav-item auth-only d-none"><a class="nav-link" data-page="my-recipes.html" href="pages/my-recipes.html">My Recipes</a></li>
+          <li class="nav-item auth-only d-none"><a class="nav-link" data-page="create-recipe.html" href="pages/create-recipe.html">Add Recipe</a></li>
         </ul>
 
         <!-- Right side: guests see Login/Signup, logged-in users see name + Logout -->
         <ul class="navbar-nav align-items-lg-center gap-2">
-          <li class="nav-item guest-only d-none"><a class="btn btn-rn-outline" href="login.html">Login</a></li>
-          <li class="nav-item guest-only d-none"><a class="btn btn-rn" href="signup.html">Signup</a></li>
+          <li class="nav-item guest-only d-none"><a class="btn btn-rn-outline" href="pages/login.html">Login</a></li>
+          <li class="nav-item guest-only d-none"><a class="btn btn-rn" href="pages/signup.html">Signup</a></li>
           <li class="nav-item auth-only d-none">
             <span class="nav-user"><span class="nav-avatar" id="nav-avatar">R</span><span id="nav-user-name">Cook</span></span>
           </li>
@@ -72,8 +72,8 @@
             </h1>
             <p class="hero-subtitle">Explore delicious recipes, discover new flavors, and share your favorite dishes with a community of food lovers.</p>
             <div class="d-flex flex-wrap gap-3">
-              <a href="recipes.html" class="btn btn-rn btn-lg"><i class="bi bi-search me-2"></i>Explore Recipes</a>
-              <a href="create-recipe.html" class="btn btn-rn-sage btn-lg"><i class="bi bi-plus-circle me-2"></i>Share Your Recipe</a>
+              <a href="pages/recipes.html" class="btn btn-rn btn-lg"><i class="bi bi-search me-2"></i>Explore Recipes</a>
+              <a href="pages/create-recipe.html" class="btn btn-rn-sage btn-lg"><i class="bi bi-plus-circle me-2"></i>Share Your Recipe</a>
             </div>
           </div>
           <div class="col-lg-6">
@@ -97,12 +97,12 @@
         <h2 class="section-title">Explore Categories</h2>
         <p class="section-sub">Pick a cuisine and see what the community is cooking.</p>
         <div class="row row-cols-2 row-cols-md-3 row-cols-xl-6 g-3">
-          <div class="col"><a class="category-card cat-pakistani" href="recipes.html?category=Pakistani"><span class="category-icon">🍛</span><span class="category-name">Pakistani</span></a></div>
-          <div class="col"><a class="category-card cat-italian" href="recipes.html?category=Italian"><span class="category-icon">🍝</span><span class="category-name">Italian</span></a></div>
-          <div class="col"><a class="category-card cat-chinese" href="recipes.html?category=Chinese"><span class="category-icon">🥡</span><span class="category-name">Chinese</span></a></div>
-          <div class="col"><a class="category-card cat-desserts" href="recipes.html?category=Desserts"><span class="category-icon">🍰</span><span class="category-name">Desserts</span></a></div>
-          <div class="col"><a class="category-card cat-fastfood" href="recipes.html?category=Fast%20Food"><span class="category-icon">🍔</span><span class="category-name">Fast Food</span></a></div>
-          <div class="col"><a class="category-card cat-healthy" href="recipes.html?category=Healthy"><span class="category-icon">🥗</span><span class="category-name">Healthy</span></a></div>
+          <div class="col"><a class="category-card cat-pakistani" href="pages/recipes.html?category=Pakistani"><span class="category-icon">🍛</span><span class="category-name">Pakistani</span></a></div>
+          <div class="col"><a class="category-card cat-italian" href="pages/recipes.html?category=Italian"><span class="category-icon">🍝</span><span class="category-name">Italian</span></a></div>
+          <div class="col"><a class="category-card cat-chinese" href="pages/recipes.html?category=Chinese"><span class="category-icon">🥡</span><span class="category-name">Chinese</span></a></div>
+          <div class="col"><a class="category-card cat-desserts" href="pages/recipes.html?category=Desserts"><span class="category-icon">🍰</span><span class="category-name">Desserts</span></a></div>
+          <div class="col"><a class="category-card cat-fastfood" href="pages/recipes.html?category=Fast%20Food"><span class="category-icon">🍔</span><span class="category-name">Fast Food</span></a></div>
+          <div class="col"><a class="category-card cat-healthy" href="pages/recipes.html?category=Healthy"><span class="category-icon">🥗</span><span class="category-name">Healthy</span></a></div>
         </div>
       </div>
     </section>
@@ -115,7 +115,7 @@
             <h2 class="section-title mb-1">Recently Added Recipes</h2>
             <p class="text-soft mb-0">Fresh from the community kitchen.</p>
           </div>
-          <a href="recipes.html" class="btn btn-rn-outline">See all recipes</a>
+          <a href="pages/recipes.html" class="btn btn-rn-outline">See all recipes</a>
         </div>
         <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4" id="recent-grid"></div>
       </div>
@@ -127,7 +127,7 @@
         <div class="cta-band">
           <h2 class="section-title">Have a recipe worth sharing?</h2>
           <p class="text-soft mb-4">Create a free account and publish your dish in a couple of minutes.</p>
-          <a href="create-recipe.html" class="btn btn-rn btn-lg">Share Your Recipe</a>
+          <a href="pages/create-recipe.html" class="btn btn-rn btn-lg">Share Your Recipe</a>
         </div>
       </div>
     </section>
@@ -145,19 +145,19 @@
           <h2>Quick Links</h2>
           <ul>
             <li><a href="index.html">Home</a></li>
-            <li><a href="recipes.html">Recipes</a></li>
-            <li><a href="dashboard.html">Dashboard</a></li>
-            <li><a href="my-recipes.html">My Recipes</a></li>
+            <li><a href="pages/recipes.html">Recipes</a></li>
+            <li><a href="pages/dashboard.html">Dashboard</a></li>
+            <li><a href="pages/my-recipes.html">My Recipes</a></li>
           </ul>
         </div>
         <div class="col-6 col-md-4">
           <h2>Categories</h2>
           <ul>
-            <li><a href="recipes.html?category=Pakistani">Pakistani</a></li>
-            <li><a href="recipes.html?category=Italian">Italian</a></li>
-            <li><a href="recipes.html?category=Chinese">Chinese</a></li>
-            <li><a href="recipes.html?category=Desserts">Desserts</a></li>
-            <li><a href="recipes.html?category=Healthy">Healthy</a></li>
+            <li><a href="pages/recipes.html?category=Pakistani">Pakistani</a></li>
+            <li><a href="pages/recipes.html?category=Italian">Italian</a></li>
+            <li><a href="pages/recipes.html?category=Chinese">Chinese</a></li>
+            <li><a href="pages/recipes.html?category=Desserts">Desserts</a></li>
+            <li><a href="pages/recipes.html?category=Healthy">Healthy</a></li>
           </ul>
         </div>
       </div>

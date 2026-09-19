@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Recipe | RecipeNest</title>
-   <link rel="shortcut icon" href="./favicon.png" type="image/x-icon">
+  <title>My Recipes | RecipeNest</title>
+   <link rel="shortcut icon" href="../favicon.png" type="image/x-icon">
   <meta name="description" content="RecipeNest: explore delicious recipes and share your favorite dishes with a community of food lovers.">
 
   <!-- Fonts -->
@@ -17,14 +17,14 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 
   <!-- Our own styles -->
-  <link href="css/style.css" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet">
 </head>
-<body>
+<body class="protected">
 
   <!-- ============ NAVBAR ============ -->
   <nav class="navbar navbar-expand-lg rn-navbar sticky-top" aria-label="Main navigation">
     <div class="container">
-      <a class="navbar-brand rn-brand" href="index.html">
+      <a class="navbar-brand rn-brand" href="../index.html">
         <span class="rn-brand-mark"><i class="bi bi-egg-fried"></i></span>RecipeNest
       </a>
 
@@ -37,7 +37,7 @@
       <div class="collapse navbar-collapse" id="mainNav">
         <!-- Centre links -->
         <ul class="navbar-nav mx-lg-auto mb-2 mb-lg-0 gap-lg-1">
-          <li class="nav-item guest-only d-none"><a class="nav-link" data-page="index.html" href="index.html">Home</a></li>
+          <li class="nav-item guest-only d-none"><a class="nav-link" data-page="index.html" href="../index.html">Home</a></li>
           <li class="nav-item auth-only d-none"><a class="nav-link" data-page="dashboard.html" href="dashboard.html">Dashboard</a></li>
           <li class="nav-item"><a class="nav-link" data-page="recipes.html" href="recipes.html">All Recipes</a></li>
           <li class="nav-item auth-only d-none"><a class="nav-link" data-page="my-recipes.html" href="my-recipes.html">My Recipes</a></li>
@@ -59,95 +59,22 @@
     </div>
   </nav>
 
-  <main class="section">
-    <div class="container">
-      <div id="page-alert"></div>
-
-      <!-- Loading state -->
-      <div id="recipe-loading" class="text-center py-5">
-        <div class="spinner-border text-rn" role="status" aria-hidden="true"></div>
-        <p class="mt-3 text-soft">Loading recipe...</p>
+  <main>
+    <header class="page-header">
+      <div class="container d-flex flex-wrap justify-content-between align-items-end gap-3">
+        <div>
+          <h1>My Recipes</h1>
+          <p class="text-soft mb-0">Everything you've shared with the community.</p>
+        </div>
+        <a href="create-recipe.html" class="btn btn-rn"><i class="bi bi-plus-lg me-1"></i>Add Recipe</a>
       </div>
-
-      <!-- Not-found state -->
-      <div id="recipe-error" class="d-none">
-        <div class="empty-state">
-          <span class="empty-emoji" aria-hidden="true">🔎</span>
-          <h2>Recipe not found</h2>
-          <p class="text-soft mb-3">This recipe may have been removed, or the link is incorrect.</p>
-          <a href="recipes.html" class="btn btn-rn">Browse all recipes</a>
-        </div>
+    </header>
+    <section class="section">
+      <div class="container">
+        <div id="page-alert"></div>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4" id="my-grid"></div>
       </div>
-
-      <!-- The recipe itself (filled in by js/recipe-details.js) -->
-      <div id="recipe-content" class="d-none">
-        <div class="row g-4 g-lg-5 align-items-start">
-          <div class="col-lg-6">
-            <img id="rd-image" class="detail-image" src="" alt="">
-          </div>
-          <div class="col-lg-6">
-            <span class="badge rounded-pill text-bg-light border mb-2 fs-6 fw-bold" id="rd-category">Category</span>
-            <h1 class="detail-title" id="rd-title">Recipe title</h1>
-            <ul class="detail-meta">
-              <li><i class="bi bi-clock"></i><span id="rd-time"></span></li>
-              <li><i class="bi bi-person"></i><span id="rd-author"></span></li>
-              <li><i class="bi bi-calendar3"></i><span id="rd-date"></span></li>
-            </ul>
-            <p class="lead text-soft" id="rd-description"></p>
-
-            <!-- Owner-only buttons (hidden for everyone else) -->
-            <div id="owner-actions" class="d-flex flex-wrap gap-2 mt-4 d-none">
-              <a id="edit-link" class="btn btn-rn-sage" href="#"><i class="bi bi-pencil me-1"></i>Edit Recipe</a>
-              <button type="button" id="delete-btn" class="btn btn-rn-danger"><i class="bi bi-trash me-1"></i>Delete Recipe</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="row g-4 mt-1">
-          <div class="col-lg-5">
-            <div class="detail-card">
-              <h2>Ingredients</h2>
-              <ul class="ingredient-list" id="rd-ingredients"></ul>
-            </div>
-          </div>
-          <div class="col-lg-7">
-            <div class="detail-card">
-              <h2>Instructions</h2>
-              <ol class="steps-list" id="rd-instructions"></ol>
-            </div>
-          </div>
-        </div>
-
-        <!-- Rating, favourite and comments -->
-        <div class="detail-card mt-4">
-          <div id="community-alert"></div>
-          <div class="d-flex flex-wrap justify-content-between align-items-center gap-3 mb-2">
-            <div>
-              <h2 class="mb-1">Rate this recipe</h2>
-              <div id="rating-stars" class="star-row"></div>
-              <p class="mb-0 fw-bold" id="rating-summary">Loading ratings...</p>
-              <p class="mb-0 text-soft small" id="rating-hint"></p>
-            </div>
-            <button type="button" id="favorite-btn" class="btn btn-rn-outline" data-favorite="0"><i class="bi bi-heart me-1"></i>Save recipe</button>
-          </div>
-
-          <hr class="my-4">
-
-          <h2>Comments (<span id="comment-count">0</span>)</h2>
-          <div id="login-hint" class="alert alert-info rn-alert d-none">
-            <a href="login.html">Log in</a> to leave a comment.
-          </div>
-          <form id="comment-form" class="mb-3">
-            <div class="form-floating mb-2">
-              <textarea class="form-control" id="comment-text" placeholder="Write a comment" style="height: 100px" maxlength="1000"></textarea>
-              <label for="comment-text">Write a comment</label>
-            </div>
-            <button type="submit" class="btn btn-rn" id="comment-btn">Post Comment</button>
-          </form>
-          <div id="comments-list"></div>
-        </div>
-      </div>
-    </div>
+    </section>
   </main>
 
   <!-- ============ DELETE CONFIRMATION MODAL ============ -->
@@ -181,7 +108,7 @@
         <div class="col-6 col-md-4">
           <h2>Quick Links</h2>
           <ul>
-            <li><a href="index.html">Home</a></li>
+            <li><a href="../index.html">Home</a></li>
             <li><a href="recipes.html">Recipes</a></li>
             <li><a href="dashboard.html">Dashboard</a></li>
             <li><a href="my-recipes.html">My Recipes</a></li>
@@ -206,9 +133,9 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Supabase library, then our own files (order matters) -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="js/supabase.js"></script>
-  <script src="js/auth.js"></script>
-  <script src="js/navbar.js"></script>
-  <script src="js/recipe-details.js"></script>
+  <script src="../js/supabase.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/navbar.js"></script>
+  <script src="../js/my-recipes.js"></script>
 </body>
 </html>

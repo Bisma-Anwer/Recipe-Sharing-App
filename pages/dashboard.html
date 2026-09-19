@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sign up | RecipeNest</title>
-   <link rel="shortcut icon" href="./favicon.png" type="image/x-icon">
+  <title>Dashboard | RecipeNest</title>
+   <link rel="shortcut icon" href="../favicon.png" type="image/x-icon">
   <meta name="description" content="RecipeNest: explore delicious recipes and share your favorite dishes with a community of food lovers.">
 
   <!-- Fonts -->
@@ -17,14 +17,14 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 
   <!-- Our own styles -->
-  <link href="css/style.css" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet">
 </head>
-<body>
+<body class="protected">
 
   <!-- ============ NAVBAR ============ -->
   <nav class="navbar navbar-expand-lg rn-navbar sticky-top" aria-label="Main navigation">
     <div class="container">
-      <a class="navbar-brand rn-brand" href="index.html">
+      <a class="navbar-brand rn-brand" href="../index.html">
         <span class="rn-brand-mark"><i class="bi bi-egg-fried"></i></span>RecipeNest
       </a>
 
@@ -37,7 +37,7 @@
       <div class="collapse navbar-collapse" id="mainNav">
         <!-- Centre links -->
         <ul class="navbar-nav mx-lg-auto mb-2 mb-lg-0 gap-lg-1">
-          <li class="nav-item guest-only d-none"><a class="nav-link" data-page="index.html" href="index.html">Home</a></li>
+          <li class="nav-item guest-only d-none"><a class="nav-link" data-page="index.html" href="../index.html">Home</a></li>
           <li class="nav-item auth-only d-none"><a class="nav-link" data-page="dashboard.html" href="dashboard.html">Dashboard</a></li>
           <li class="nav-item"><a class="nav-link" data-page="recipes.html" href="recipes.html">All Recipes</a></li>
           <li class="nav-item auth-only d-none"><a class="nav-link" data-page="my-recipes.html" href="my-recipes.html">My Recipes</a></li>
@@ -59,48 +59,78 @@
     </div>
   </nav>
 
-  <main class="auth-wrap">
-    <div class="container">
-      <div class="auth-card">
-        <div class="auth-side">
-          <div class="big-emoji" aria-hidden="true">🥘</div>
-          <h2>Join the RecipeNest community</h2>
-          <p class="mb-0">Share your favorite dishes and discover new flavors from cooks everywhere.</p>
-        </div>
-        <div class="auth-form">
-          <h1>Create your account</h1>
-          <p class="text-soft mb-4">It only takes a minute.</p>
-
-          <div id="form-alert"></div>
-
-          <form id="signup-form" novalidate>
-            <div class="form-floating mb-3">
-              <input type="text" class="form-control" id="signup-name" placeholder="Full Name" autocomplete="name" required>
-              <label for="signup-name">Full Name</label>
-              <div class="invalid-feedback"></div>
-            </div>
-            <div class="form-floating mb-3">
-              <input type="email" class="form-control" id="signup-email" placeholder="Email" autocomplete="email" required>
-              <label for="signup-email">Email</label>
-              <div class="invalid-feedback"></div>
-            </div>
-            <div class="form-floating mb-3">
-              <input type="password" class="form-control" id="signup-password" placeholder="Password" autocomplete="new-password" required>
-              <label for="signup-password">Password (6+ characters)</label>
-              <div class="invalid-feedback"></div>
-            </div>
-            <div class="form-floating mb-4">
-              <input type="password" class="form-control" id="signup-confirm" placeholder="Confirm Password" autocomplete="new-password" required>
-              <label for="signup-confirm">Confirm Password</label>
-              <div class="invalid-feedback"></div>
-            </div>
-            <button type="submit" class="btn btn-rn btn-lg w-100" id="signup-btn">Create Account</button>
-          </form>
-
-          <p class="text-center mt-4 mb-0">Already have an account? <a href="login.html">Login</a></p>
+  <main>
+    <section class="section pb-0">
+      <div class="container">
+        <!-- Welcome card -->
+        <div class="welcome-card">
+          <h1>Welcome, <span id="welcome-name">Cook</span>! 👋</h1>
+          <p class="text-soft mb-0">Here's what's cooking on RecipeNest today.</p>
         </div>
       </div>
-    </div>
+    </section>
+
+    <!-- Statistics -->
+    <section class="section pb-0">
+      <div class="container">
+        <div class="row g-3">
+          <div class="col-12 col-md-4">
+            <div class="stat-card s-pink">
+              <div class="stat-icon"><i class="bi bi-journal-richtext"></i></div>
+              <div><div class="stat-number" id="stat-total">0</div><p class="stat-label">Total Recipes</p><p class="stat-note">shared by everyone</p></div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="stat-card s-peach">
+              <div class="stat-icon"><i class="bi bi-person-heart"></i></div>
+              <div><div class="stat-number" id="stat-mine">0</div><p class="stat-label">My Recipes</p><p class="stat-note">created by you</p></div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="stat-card s-sage">
+              <div class="stat-icon"><i class="bi bi-stars"></i></div>
+              <div><div class="stat-number" id="stat-recent">0</div><p class="stat-label">Recent Recipes</p><p class="stat-note">added in the last 7 days</p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick actions -->
+    <section class="section pb-0">
+      <div class="container">
+        <h2 class="section-title">Quick Actions</h2>
+        <div class="row g-3 mt-1">
+          <div class="col-12 col-md-4">
+            <a class="action-card" href="create-recipe.html">
+              <span class="action-icon" style="background:var(--rn-pink)"><i class="bi bi-plus-lg"></i></span>
+              <span><h3>Add Recipe</h3><p>Share a new dish</p></span>
+            </a>
+          </div>
+          <div class="col-12 col-md-4">
+            <a class="action-card" href="recipes.html">
+              <span class="action-icon" style="background:var(--rn-lavender)"><i class="bi bi-search"></i></span>
+              <span><h3>Browse Recipes</h3><p>Find something tasty</p></span>
+            </a>
+          </div>
+          <div class="col-12 col-md-4">
+            <a class="action-card" href="my-recipes.html">
+              <span class="action-icon" style="background:var(--rn-sage)"><i class="bi bi-collection"></i></span>
+              <span><h3>My Recipes</h3><p>Edit or delete yours</p></span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recent recipes -->
+    <section class="section">
+      <div class="container">
+        <h2 class="section-title">Recent Recipes</h2>
+        <p class="section-sub">The newest dishes from the community.</p>
+        <div class="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4" id="recent-grid"></div>
+      </div>
+    </section>
   </main>
 
   <!-- ============ FOOTER ============ -->
@@ -114,7 +144,7 @@
         <div class="col-6 col-md-4">
           <h2>Quick Links</h2>
           <ul>
-            <li><a href="index.html">Home</a></li>
+            <li><a href="../index.html">Home</a></li>
             <li><a href="recipes.html">Recipes</a></li>
             <li><a href="dashboard.html">Dashboard</a></li>
             <li><a href="my-recipes.html">My Recipes</a></li>
@@ -139,8 +169,9 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Supabase library, then our own files (order matters) -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="js/supabase.js"></script>
-  <script src="js/auth.js"></script>
-  <script src="js/navbar.js"></script>
+  <script src="../js/supabase.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/navbar.js"></script>
+  <script src="../js/dashboard.js"></script>
 </body>
 </html>

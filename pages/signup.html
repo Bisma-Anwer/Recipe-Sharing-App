@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Login | RecipeNest</title>
-   <link rel="shortcut icon" href="./favicon.png" type="image/x-icon">
+  <title>Sign up | RecipeNest</title>
+   <link rel="shortcut icon" href="../favicon.png" type="image/x-icon">
   <meta name="description" content="RecipeNest: explore delicious recipes and share your favorite dishes with a community of food lovers.">
 
   <!-- Fonts -->
@@ -17,14 +17,14 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
 
   <!-- Our own styles -->
-  <link href="css/style.css" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet">
 </head>
 <body>
 
   <!-- ============ NAVBAR ============ -->
   <nav class="navbar navbar-expand-lg rn-navbar sticky-top" aria-label="Main navigation">
     <div class="container">
-      <a class="navbar-brand rn-brand" href="index.html">
+      <a class="navbar-brand rn-brand" href="../index.html">
         <span class="rn-brand-mark"><i class="bi bi-egg-fried"></i></span>RecipeNest
       </a>
 
@@ -37,7 +37,7 @@
       <div class="collapse navbar-collapse" id="mainNav">
         <!-- Centre links -->
         <ul class="navbar-nav mx-lg-auto mb-2 mb-lg-0 gap-lg-1">
-          <li class="nav-item guest-only d-none"><a class="nav-link" data-page="index.html" href="index.html">Home</a></li>
+          <li class="nav-item guest-only d-none"><a class="nav-link" data-page="index.html" href="../index.html">Home</a></li>
           <li class="nav-item auth-only d-none"><a class="nav-link" data-page="dashboard.html" href="dashboard.html">Dashboard</a></li>
           <li class="nav-item"><a class="nav-link" data-page="recipes.html" href="recipes.html">All Recipes</a></li>
           <li class="nav-item auth-only d-none"><a class="nav-link" data-page="my-recipes.html" href="my-recipes.html">My Recipes</a></li>
@@ -63,31 +63,41 @@
     <div class="container">
       <div class="auth-card">
         <div class="auth-side">
-          <div class="big-emoji" aria-hidden="true">🍳</div>
-          <h2>Welcome back to the kitchen</h2>
-          <p class="mb-0">Log in to add recipes, manage your dishes and see what's new.</p>
+          <div class="big-emoji" aria-hidden="true">🥘</div>
+          <h2>Join the RecipeNest community</h2>
+          <p class="mb-0">Share your favorite dishes and discover new flavors from cooks everywhere.</p>
         </div>
         <div class="auth-form">
-          <h1>Login</h1>
-          <p class="text-soft mb-4">Enter your details to continue.</p>
+          <h1>Create your account</h1>
+          <p class="text-soft mb-4">It only takes a minute.</p>
 
           <div id="form-alert"></div>
 
-          <form id="login-form" novalidate>
+          <form id="signup-form" novalidate>
             <div class="form-floating mb-3">
-              <input type="email" class="form-control" id="login-email" placeholder="Email" autocomplete="email" required>
-              <label for="login-email">Email</label>
+              <input type="text" class="form-control" id="signup-name" placeholder="Full Name" autocomplete="name" required>
+              <label for="signup-name">Full Name</label>
+              <div class="invalid-feedback"></div>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="email" class="form-control" id="signup-email" placeholder="Email" autocomplete="email" required>
+              <label for="signup-email">Email</label>
+              <div class="invalid-feedback"></div>
+            </div>
+            <div class="form-floating mb-3">
+              <input type="password" class="form-control" id="signup-password" placeholder="Password" autocomplete="new-password" required>
+              <label for="signup-password">Password (6+ characters)</label>
               <div class="invalid-feedback"></div>
             </div>
             <div class="form-floating mb-4">
-              <input type="password" class="form-control" id="login-password" placeholder="Password" autocomplete="current-password" required>
-              <label for="login-password">Password</label>
+              <input type="password" class="form-control" id="signup-confirm" placeholder="Confirm Password" autocomplete="new-password" required>
+              <label for="signup-confirm">Confirm Password</label>
               <div class="invalid-feedback"></div>
             </div>
-            <button type="submit" class="btn btn-rn btn-lg w-100" id="login-btn">Login</button>
+            <button type="submit" class="btn btn-rn btn-lg w-100" id="signup-btn">Create Account</button>
           </form>
 
-          <p class="text-center mt-4 mb-0">Don't have an account? <a href="signup.html">Sign up</a></p>
+          <p class="text-center mt-4 mb-0">Already have an account? <a href="login.html">Login</a></p>
         </div>
       </div>
     </div>
@@ -104,7 +114,7 @@
         <div class="col-6 col-md-4">
           <h2>Quick Links</h2>
           <ul>
-            <li><a href="index.html">Home</a></li>
+            <li><a href="../index.html">Home</a></li>
             <li><a href="recipes.html">Recipes</a></li>
             <li><a href="dashboard.html">Dashboard</a></li>
             <li><a href="my-recipes.html">My Recipes</a></li>
@@ -129,8 +139,8 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Supabase library, then our own files (order matters) -->
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  <script src="js/supabase.js"></script>
-  <script src="js/auth.js"></script>
-  <script src="js/navbar.js"></script>
+  <script src="../js/supabase.js"></script>
+  <script src="../js/auth.js"></script>
+  <script src="../js/navbar.js"></script>
 </body>
 </html>
