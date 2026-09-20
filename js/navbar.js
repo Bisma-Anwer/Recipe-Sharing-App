@@ -1,4 +1,3 @@
-
 const NAV_ACTIVE_MAP = {
   "": "index.html",
   "index.html": "index.html",
@@ -33,17 +32,16 @@ async function initNavbar() {
   applyNavbarState(await getCurrentUser());
   highlightActiveLink();
 
- 
+
   const logoutBtn = document.getElementById("logout-btn");
   if (logoutBtn) {
     logoutBtn.addEventListener("click", async () => {
       logoutBtn.disabled = true;
       await logOut();
-      window.location.href = "index.html";
     });
   }
 
- 
+
   db.auth.onAuthStateChange((event, session) => {
     applyNavbarState(session ? session.user : null);
   });

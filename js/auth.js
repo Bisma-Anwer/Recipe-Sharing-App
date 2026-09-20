@@ -1,4 +1,17 @@
 
+function loginPagePath() {
+  return window.location.pathname.includes("/pages/")
+    ? "login.html"
+    : "pages/login.html";
+}
+
+// Dashboard page ka sahi path
+function dashboardPagePath() {
+  return window.location.pathname.includes("/pages/")
+    ? "dashboard.html"
+    : "pages/dashboard.html";
+}
+
 async function getCurrentUser() {
   const { data, error } = await db.auth.getSession();
   if (error || !data.session) return null;
@@ -17,16 +30,16 @@ function getDisplayName(user) {
 async function requireAuth() {
   const user = await getCurrentUser();
   if (!user) {
-    window.location.replace("login.html");
+    window.location.replace(loginPagePath());
     return null;
   }
-  document.body.classList.add("auth-ready"); 
+  document.body.classList.add("auth-ready");
   return user;
 }
 
 async function redirectIfLoggedIn() {
   const user = await getCurrentUser();
-  if (user) window.location.replace("dashboard.html");
+  if (user) window.location.replace(dashboardPagePath());
 }
 
 
@@ -47,6 +60,7 @@ async function ensureProfile(user) {
 
 async function logOut() {
   await db.auth.signOut();
+  window.location.replace(loginPagePath());
 }
 
 
@@ -87,7 +101,7 @@ if (signupForm) {
     const password = passwordInput.value;
     const confirm = confirmInput.value;
 
-   
+
     let valid = true;
     if (fullName.length < 2) { setFieldError(nameInput, "Please enter your full name."); valid = false; }
     if (!isValidEmail(email)) { setFieldError(emailInput, "Please enter a valid email address."); valid = false; }
@@ -95,7 +109,7 @@ if (signupForm) {
     if (confirm !== password) { setFieldError(confirmInput, "Passwords do not match."); valid = false; }
     if (!valid) return;
 
-    
+
     setButtonLoading(button, true, "Creating account...");
     const { data, error } = await db.auth.signUp({
       email,
@@ -115,12 +129,12 @@ if (signupForm) {
     }
 
     if (data.session) {
-      
+
       await ensureProfile(data.user);
       showAlert("form-alert", "Account created! Taking you to your dashboard...", "success");
-      setTimeout(() => window.location.replace("dashboard.html"), 1200);
+      setTimeout(() => window.location.replace(dashboardPagePath()), 1200);
     } else {
-      
+
       signupForm.reset();
       showAlert(
         "form-alert",
@@ -167,6 +181,6 @@ if (loginForm) {
     }
 
     await ensureProfile(data.user);
-    window.location.replace("dashboard.html");
+    window.location.replace(dashboardPagePath());
   });
 }
